@@ -22,7 +22,7 @@
                 <h2 class="rvm-section-title">Advertiser List</h2>
 
                 <div class="rvm-select-wrapper">
-                    <select name="respType" id="type" class="rvm-select">
+                    <select name="respType" id="type" class="rvm-select" data-url="/advertisers/?format=">
                         <option value="json" default>json</option>
                         <option value="xml">xml</option>
                     </select>
@@ -30,15 +30,15 @@
             </div>
 
             <div class="rvm-endpoint language-http">
-                <pre class="rvm-preformated">
-                    <code class="rvm-code">
+                <pre>
+                    <code>
                         GET  /advertisers/?format=api
                     </code>
                 </pre>
             </div>
-            <div class="rvm-response-header">
-                <pre class="rvm-preformated language-http">
-                    <code class="rvm-code language-http">
+            <div class="rvm-response-header language-http">
+                <pre>
+                    <code>
                         HTTP 200 OK
                         Vary: Accept
                         Allow: GET, POST, HEAD, OPTIONS
@@ -47,13 +47,7 @@
                 </pre>
             </div>
             <div class="rvm-response">
-                <pre class="rvm-preformated" data-src="/response.json">
-                </pre>
-            </div>
-            <div class="rvm-response">
-                <pre class="rvm-preformated" data-src="/response.xml">
-                    
-                </pre>
+                <pre data-src="/advertisers/?format=json" class="language-json"></pre>
             </div>
         </section>
     </main>

@@ -2,10 +2,15 @@ var express = require('express');
 var app = express();
 var path = __dirname;
 
-app.use(express.static(`${path}`));
+app.use('/dist', express.static(path + '/dist'));
 app.get('/', function (req, res) {
-  res.sendFile(`${path}/index.html`);
-})
+  res.sendFile(path + '/index.html');
+});
+
+app.get('/advertisers/', function (req, res) {
+    const format = req.query.format;
+    res.sendFile(path + '/response.' + format);
+});
 
 app.listen(3100, (err) => {
     if (err) throw err
