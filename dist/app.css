@@ -120,3 +120,8 @@ body {
     padding: .2rem 2em .2rem .5rem;
     min-width: 5em;
 }
+
+pre[class*="language-"] {
+    border-radius: .3rem;
+    border: .1rem solid var(--lightgray);
+}
