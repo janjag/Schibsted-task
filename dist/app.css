@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fefefe;
+    --lightgray: #b8b2b2;
+    --gray: #818181;
+    --darkgray: #414141;
+    --black: #232323;
+    --red: #cf2d2d;
+    --blue: #0177aa;
+    --darkblue: #065374;
+}
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    background-color: var(--white);
+    color: var(--black);
+    font-size: 62.5%; /* ~10px => 1rem */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+/* Page "global" elements */
+/* rvm - REST view module */
+
+.rvm-content {
+    width: 100%;
+    max-width: 124rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.rvm-header {
+    background-color: var(--darkgray);
+    border-top: .2em solid var(--red);
+    color: var(--lightgray);
+    padding: 3rem 0;
+}
+
+.rvm-title {
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.rvm-version {
+    color: var(--gray);
+    display: inline-block;
+    vertical-align: bottom;
+    font-size: 1.4rem;
+    font-weight: 100;
+}
+.rvm-version-inner {
+    color: var(--lightgray);
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+.rvm-main {
+    padding: 6rem 0;
+}
+
+/* Sections */
+.rvm-section:not(:last-of-type) {
+    margin-bottom: 3rem;
+}
+
+.rmv-seaction-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.rvm-select-wrapper {
+    border-radius: .3rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.rvm-select-wrapper::after {
+    content: '▼';
+    background-color: var(--darkblue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .5em;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 1.8rem;
+    pointer-events: none;
+}
+
+.rvm-select {
+    background-color: var(--blue);
+    border: 0;
+    border-radius: 0;
+    color: var(--white);
+    font-size: 1.4rem;
+    font-family: inherit;
+    padding: .2rem 2em .2rem .5rem;
+    min-width: 5em;
+}

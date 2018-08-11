@@ -6,27 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>REST viewer</title>
 
+    <link rel="stylesheet" href="/dist/lib/prism/prism.css">
     <link rel="stylesheet" href="/dist/app.css">
 </head>
 <body>
     <header class="rvm-header">
         <div class="rvm-content">
-            <h1 class="rvm-title">Schibsted REST framework</h1><span class="rvm-version">v <span class="rvm-version-inner">3.1.1</span></span>
+            <h1 class="rvm-title">Schibsted REST framework</h1> <span class="rvm-version">v <span class="rvm-version-inner">3.1.1</span></span>
         </div>
     </header>
 
-    <manin class="rvm-main">
-        <section class="rvm-section">
+    <main class="rvm-main">
+        <section class="rvm-section rvm-content">
             <div class="rmv-seaction-heading">
                 <h2 class="rvm-section-title">Advertiser List</h2>
 
-                <select name="respType" id="type" class="rvm-select">
-                    <option value="json" default>json</option>
-                    <option value="xml">xml</option>
-                </select>
+                <div class="rvm-select-wrapper">
+                    <select name="respType" id="type" class="rvm-select">
+                        <option value="json" default>json</option>
+                        <option value="xml">xml</option>
+                    </select>
+                </div>
             </div>
 
-            <div class="rvm-endpoint">
+            <div class="rvm-endpoint language-http">
                 <pre class="rvm-preformated">
                     <code class="rvm-code">
                         GET  /advertisers/?format=api
@@ -34,8 +37,8 @@
                 </pre>
             </div>
             <div class="rvm-response-header">
-                <pre class="rvm-preformated">
-                    <code class="rvm-code">
+                <pre class="rvm-preformated language-http">
+                    <code class="rvm-code language-http">
                         HTTP 200 OK
                         Vary: Accept
                         Allow: GET, POST, HEAD, OPTIONS
@@ -44,24 +47,18 @@
                 </pre>
             </div>
             <div class="rvm-response">
-                <pre class="rvm-preformated">
-                    <code class="rvm-code">
-                        [
-                            {
-                                "id": 1,
-                                "name": "MockAdvertiser",
-                                "external_id": "1",
-                                "impressions": 52721284,
-                                "clicks": 93149
-                            }
-                        ]
-                    </code>
+                <pre class="rvm-preformated" data-src="/response.json">
+                </pre>
+            </div>
+            <div class="rvm-response">
+                <pre class="rvm-preformated" data-src="/response.xml">
+                    
                 </pre>
             </div>
         </section>
-    </manin>
+    </main>
 
-
+    <script src="/dist/lib/prism/prism.js"></script>
     <script src="/dist/app.js"></script>
 </body>
 </html>
