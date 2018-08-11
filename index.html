@@ -9,7 +9,59 @@
     <link rel="stylesheet" href="/dist/app.css">
 </head>
 <body>
-    
+    <header class="rvm-header">
+        <div class="rvm-content">
+            <h1 class="rvm-title">Schibsted REST framework</h1><span class="rvm-version">v <span class="rvm-version-inner">3.1.1</span></span>
+        </div>
+    </header>
+
+    <manin class="rvm-main">
+        <section class="rvm-section">
+            <div class="rmv-seaction-heading">
+                <h2 class="rvm-section-title">Advertiser List</h2>
+
+                <select name="respType" id="type" class="rvm-select">
+                    <option value="json" default>json</option>
+                    <option value="xml">xml</option>
+                </select>
+            </div>
+
+            <div class="rvm-endpoint">
+                <pre class="rvm-preformated">
+                    <code class="rvm-code">
+                        GET  /advertisers/?format=api
+                    </code>
+                </pre>
+            </div>
+            <div class="rvm-response-header">
+                <pre class="rvm-preformated">
+                    <code class="rvm-code">
+                        HTTP 200 OK
+                        Vary: Accept
+                        Allow: GET, POST, HEAD, OPTIONS
+                        Contetn-Type: aplication/json
+                    </code>
+                </pre>
+            </div>
+            <div class="rvm-response">
+                <pre class="rvm-preformated">
+                    <code class="rvm-code">
+                        [
+                            {
+                                "id": 1,
+                                "name": "MockAdvertiser",
+                                "external_id": "1",
+                                "impressions": 52721284,
+                                "clicks": 93149
+                            }
+                        ]
+                    </code>
+                </pre>
+            </div>
+        </section>
+    </manin>
+
+
     <script src="/dist/app.js"></script>
 </body>
 </html>
