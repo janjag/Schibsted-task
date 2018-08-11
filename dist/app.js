@@ -1,6 +1,6 @@
 'use strict';
 
-(function(doc, win) {
+(function(doc) {
     var EV_CHANGE = 'change';
     var EL_RVM_SELECT = '.rvm-select';
     var EL_RVM_RES_HEADER = '.rvm-response-header code';
@@ -26,7 +26,6 @@
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
                 // Success!
-                var resp = request.responseText;
                 updateResFile(request.responseURL, type, request.response);
             } else {
                 // We reached our target server, but it returned an error
@@ -86,4 +85,4 @@
     });
     
 
-})(document, window);
+})(document);
