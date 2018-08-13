@@ -7,7 +7,11 @@
     var EL_RVM_RES = '.rvm-response pre';
     var EL_DATA_URL = 'data-url';
     var EL_DATA_SRC = 'data-src';
+    var EL_DATA_PARENTID = 'data-parentid';
     var REQ_GET = 'GET';
+
+    var APP_JSON = 'aplication/json';
+    var APP_XML = 'aplication/xml';
 
     function getElement(el) {
         return document.querySelector(el);
@@ -17,16 +21,17 @@
      * @param  {string} reqType  Request type
      * @param  {string} url   Request url
      * @param  {string} type Response file type
+     * @param  {string} id Section id
      * @param  {function} callback Callback function
      */
-    function getFile(reqType, url, type, callback) {
+    function getFile(reqType, url, type, id, callback) {
         var request = new XMLHttpRequest();
         request.open(reqType, url, true);
 
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) {
                 // Success!
-                updateResFile(request.responseURL, type, request.response);
+                updateResFile(id, request.responseURL, type, request.response);
             } else {
                 // We reached our target server, but it returned an error
             }
@@ -39,21 +44,22 @@
         callback;
     }
     /**
+     * @param  {string} id Section id
      * @param  {string} type Response file type - json or xml
      */
-    function updateResHeader(type) {
-        var el = getElement(EL_RVM_RES_HEADER);
+    function updateResHeader(id, type) {
+        var el = getElement(id + ' ' + EL_RVM_RES_HEADER);
         var elHTML = el.textContent;
         var newHTML;
         switch (type) {
             case 'xml':
-                newHTML = elHTML.replace('aplication/json', 'aplication/xml');
+                newHTML = elHTML.replace(APP_JSON, APP_XML);
                 break;
             case 'json':
-                newHTML = elHTML.replace('aplication/xml', 'aplication/json');
+                newHTML = elHTML.replace(APP_XML, APP_JSON);
                 break;
             default:
-                newHTML = elHTML.replace('aplication/xml', 'aplication/json')
+                newHTML = elHTML.replace(APP_XML, APP_JSON)
         }
 
         el.textContent = newHTML;
@@ -61,12 +67,13 @@
     }
 
     /**
+     * @param  {string} id Section id
      * @param  {string} url Response url
      * @param  {string} type Response file type - json or xml
      * @param  {string} response Response body
      */
-    function updateResFile(url, type, response) {
-        var el = getElement(EL_RVM_RES);
+    function updateResFile(id, url, type, response) {
+        var el = getElement(id + ' ' + EL_RVM_RES);
 
         el.classList = '';
         el.classList.add('language-'+ type);
@@ -79,8 +86,9 @@
         if(ev.target.matches(EL_RVM_SELECT)) {
             var value = ev.target.value
             var url = ev.target.getAttribute(EL_DATA_URL);
+            var id = '#' + ev.target.getAttribute(EL_DATA_PARENTID);
 
-            getFile(REQ_GET, url + value, value, updateResHeader(value));
+            getFile(REQ_GET, url + value, value, id, updateResHeader(id,value));
         }
     });
     
