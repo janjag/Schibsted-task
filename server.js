@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 
 app.get('/advertisers/', function (req, res) {
     const format = req.query.format;
-    res.sendFile(path + '/response.' + format);
+    res.sendFile(path + '/data/response.' + format);
 });
 
 app.listen(3100, (err) => {

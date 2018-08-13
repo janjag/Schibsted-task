@@ -24,7 +24,7 @@
      * @param  {string} id Section id
      * @param  {function} callback Callback function
      */
-    function getFile(reqType, url, type, id, callback) {
+    function getData(reqType, url, type, id, callback) {
         var request = new XMLHttpRequest();
         request.open(reqType, url, true);
 
@@ -34,14 +34,18 @@
                 updateResFile(id, request.responseURL, type, request.response);
             } else {
                 // We reached our target server, but it returned an error
+                console.error();
             }
         };
 
         request.onerror = function() {
-        // There was a connection error of some sort
+            // There was a connection error of some sort
+            console.error();
         };
         request.send();
-        callback;
+        if (callback instanceof Function) {
+            callback();
+        }
     }
     /**
      * @param  {string} id Section id
@@ -88,7 +92,7 @@
             var url = ev.target.getAttribute(EL_DATA_URL);
             var id = '#' + ev.target.getAttribute(EL_DATA_PARENTID);
 
-            getFile(REQ_GET, url + value, value, id, updateResHeader(id,value));
+            getData(REQ_GET, url + value, value, id, updateResHeader(id,value));
         }
     });
     
